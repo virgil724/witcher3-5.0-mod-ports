@@ -1,0 +1,30 @@
+--- a/modBetterIcons2025_NextGen/content/scripts/game/gui/menus/alchemyMenu.ws
++++ b/modBetterIcons2025_NextGen/content/scripts/game/gui/menus/alchemyMenu.ws
+@@ -37,6 +37,8 @@
+ 	default DATA_BINDING_NAME_DESCRIPTION	= "alchemy.item.description";
+ 	
+ 	var itemsQuantity 						: array< int >;
++
++	private var m_forcedThunderbolt : bool;
+ 	
+ 	event  OnConfigUI()
+ 	{	
+@@ -48,6 +50,8 @@
+ 		var l_initData			: W3InventoryInitData;
+ 		
+ 		super.OnConfigUI();
++
++		m_forcedThunderbolt = (FactsQuerySum("tut_forced_preparation") > 0);
+ 		
+ 		m_initialSelectionsToIgnore = 2;
+ 		
+@@ -122,6 +126,9 @@
+ 		}
+ 		
+ 		theSound.SoundEvent( 'gui_global_quit' ); 
++
++		if(m_forcedThunderbolt)
++			theGame.GetTutorialSystem().ForcedAlchemyCleanup();
+ 		CloseMenu();
+ 	}
+ 

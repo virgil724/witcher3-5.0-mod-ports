@@ -1,0 +1,56 @@
+--- a/modBetterIcons2025_NextGen/content/scripts/game/gui/menus/craftingMenu.ws
++++ b/modBetterIcons2025_NextGen/content/scripts/game/gui/menus/craftingMenu.ws
+@@ -29,6 +29,7 @@
+ 	private var m_fxSetFilters			: CScriptedFlashFunction;
+ 	private var m_fxSetPinnedRecipe		: CScriptedFlashFunction;
+ 	private var m_fxSetMerchantCheck	: CScriptedFlashFunction;
++	private var m_fxSetGlossaryMode		: CScriptedFlashFunction;
+ 		
+ 	default bCouldCraft 			= false;
+ 	
+@@ -87,6 +88,7 @@
+ 		m_fxSetFilters = m_flashModule.GetMemberFlashFunction("SetFiltersValue");
+ 		m_fxSetPinnedRecipe = m_flashModule.GetMemberFlashFunction("setPinnedRecipe");
+ 		m_fxSetMerchantCheck = m_flashModule.GetMemberFlashFunction("setMerchantTypeCheck");
++		m_fxSetGlossaryMode = m_flashModule.GetMemberFlashFunction("setGlossaryMode");
+ 		
+ 		if(_craftsmanComponent)
+ 		{
+@@ -99,6 +101,7 @@
+ 		}
+ 		
+ 		m_fxSetCraftingEnabled.InvokeSelfOneArg(FlashArgBool(bCouldCraft));
++		m_fxSetGlossaryMode.InvokeSelfOneArg(FlashArgBool(!bCouldCraft));
+ 		
+ 		l_craftingFilters = GetWitcherPlayer().GetCraftingFilters();
+ 		m_fxSetFilters.InvokeSelfSixArgs(FlashArgString(GetLocStringByKeyExt("gui_panel_filter_has_ingredients")), FlashArgBool(l_craftingFilters.showCraftable), 
+@@ -127,17 +130,25 @@
+ 		}
+ 	}
+ 
+-	event  OnCloseMenu() 
++	event  OnCloseMenu()
+ 	{
+ 		var commonMenu : CR4CommonMenu;
++		var glossaryMainMenu : CR4GlossaryMainMenu;
+ 		
+ 		commonMenu = (CR4CommonMenu)m_parentMenu;
+-		if(commonMenu)
++		glossaryMainMenu = (CR4GlossaryMainMenu)m_parentMenu;
++		
++		if( commonMenu )
+ 		{
+ 			commonMenu.ChildRequestCloseMenu();
+ 		}
+-		
+-		theSound.SoundEvent( 'gui_global_quit' ); 
++		if(glossaryMainMenu)
++		{
++			glossaryMainMenu.ChildRequestCloseMenu();
++		}
++		
++		theSound.SoundEvent( 'gui_global_quit' );
++		
+ 		CloseMenu();
+ 	}
+ 

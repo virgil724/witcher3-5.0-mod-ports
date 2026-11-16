@@ -1,0 +1,20 @@
+--- a/modBetterIcons2025_NextGen/content/scripts/game/gui/menus/listBaseMenu.ws
++++ b/modBetterIcons2025_NextGen/content/scripts/game/gui/menus/listBaseMenu.ws
+@@ -123,8 +123,16 @@
+ 	
+ 	protected function HandleMenuLoaded():void
+ 	{
++		var journalInitData : W3JournalInitData;
+ 		super.HandleMenuLoaded();
+-		OnEntrySelected(currentTag);
++
++		journalInitData = (W3JournalInitData)GetMenuInitData();
++
++		if(journalInitData)
++			OnEntrySelected(journalInitData.questTag);
++		else
++			OnEntrySelected(currentTag);
++		
+ 	}
+ 
+ 	function PopulateData() 

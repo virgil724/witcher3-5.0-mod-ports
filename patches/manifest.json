@@ -1,0 +1,97 @@
+[
+ {
+  "file": "modBetterIcons2025_NextGen/content/scripts/game/gameplay/effects/effects/baseEffect.ws",
+  "before": "de7f6a5e0c84b2bd5a6c0d564ad9f1ad5ba3a80d7e5203efcc6f41ed7d0ddacc",
+  "after": "709c6f936488cd5f82ec01734e37ef023d7e33495f9c764bac105d2e7418505b"
+ },
+ {
+  "file": "modBetterIcons2025_NextGen/content/scripts/game/gui/_old/components/guiBaseInventoryComponent.ws",
+  "before": "1c928e15f4b4d606403578a36e03d90cad7fb48d4f174bc1189dbde062998f61",
+  "after": "aec8aba047f7079a62c72f2d98f8f02b04badac0eb08cc9892a19620599598b2"
+ },
+ {
+  "file": "modBetterIcons2025_NextGen/content/scripts/game/gui/hud/modules/hudModuleJournalUpdate.ws",
+  "before": "53fa41e3b36b4bd28e7a9d6a142955e54740e0a7e6ce6ef00267392e4317d77b",
+  "after": "b0de08a87201b9cd2bdaf1763d98277b3ad579e8b483182ab0ab787072bc02e4"
+ },
+ {
+  "file": "modBetterIcons2025_NextGen/content/scripts/game/gui/hud/modules/hudModuleRadialMenu.ws",
+  "before": "4737c027795910906f9f380bc1255f1b83c26833463c7cd1a5c1b59ebd10cd58",
+  "after": "0f6fc564d6c581f8a4509b30357deeb951482ff37cf2f8a024ba907472b46f2e"
+ },
+ {
+  "file": "modBetterIcons2025_NextGen/content/scripts/game/gui/menus/alchemyMenu.ws",
+  "before": "847b02f97d45438eb5876a1e40d008862a7e335f7994cfee72276989a418f970",
+  "after": "8549d237361271662b0ad819f5d212b4d1c63ca09c0139a84b80de525cf5b2a1"
+ },
+ {
+  "file": "modBetterIcons2025_NextGen/content/scripts/game/gui/menus/commonMenu.ws",
+  "before": "8a630e389aa7c69c065e5143d5bb9b73d723eee69cab374e48c0b53e137fc53f",
+  "after": "57f713f2f4d3b5e1a4af50f427f1d04aa11745ceeb8aef98a50081a0fbf4b699"
+ },
+ {
+  "file": "modBetterIcons2025_NextGen/content/scripts/game/gui/menus/craftingMenu.ws",
+  "before": "46c0462f85e52abc8a8a5c0182328c7c544a37f5a92e23a9a9b00725f0f35ad2",
+  "after": "b5378a9355f7aecc67d76cfeb9c5d9e1b678e5ebafa65ba8a1d8580b62ad9b16"
+ },
+ {
+  "file": "modBetterIcons2025_NextGen/content/scripts/game/gui/menus/glossaryBestiaryMenu.ws",
+  "before": "b03cd2a2908f269393de69f1a02212bd5d0218f4235c5168874e0113fbe2c1f8",
+  "after": "180e67f154c45737587993b2fcfffe1f3245a56a3418fdb3468f986b8b036575"
+ },
+ {
+  "file": "modBetterIcons2025_NextGen/content/scripts/game/gui/menus/listBaseMenu.ws",
+  "before": "e21b3c6f7bad7332afa3e379d16f249018be0d8fb6ce928568fddaa36f0993db",
+  "after": "40113d96f1a994aad48bb20eeb710f38e402a5c65b4ee04079a80673e548b915"
+ },
+ {
+  "file": "modBetterIcons2025_NextGen/content/scripts/game/gui/popups/LootPopup.ws",
+  "before": "b5e935b8e6698bab051c9595bf222408e834e16ecdf0da17e9edebaf1df109f9",
+  "after": "31d8f011f2daa10d1750cc685a6e3fe9a0bba67d184c8904ae294424a1044b65"
+ },
+ {
+  "file": "modImmersiveCamNG/content/scripts/game/player/r4Player.ws",
+  "before": "15baf0b213d2870a98ab4e4de7a0f9f152f98f096ae655dffd74165931e459f5",
+  "after": "12817e340625b24ea7b9174d1f4132f3ed3bb50927319294919c6a678c4e67b3"
+ },
+ {
+  "file": "modImmersiveCamNG/content/scripts/game/player/states/aimThrow.ws",
+  "before": "7ece7c9fb8dd6cda810430d35b207890de74f1cb3cc87779a17ec844ae26e2b3",
+  "after": "6ba293a84328149eca5c2bcd57084dda132d0f37f2cbfa043b94d97ed692df61"
+ },
+ {
+  "file": "modImmersiveCamNG/content/scripts/game/player/states/combat.ws",
+  "before": "d35a23e9e4579881a822c769cac4cf5bc427bad06338d6266b2a607f78e3ea94",
+  "after": "29572be434f64f69b176f3f28f4e704f5840b1a27805cc38b49761232880552c"
+ },
+ {
+  "file": "modImmersiveCamNG/content/scripts/game/player/states/exploration.ws",
+  "before": "2b4b873bd18ad13dff534382c012752bee3a58ad0ee8362f91f114f6bce31ac0",
+  "after": "34691c03ae483629fab2da4c6e6ed6dc9ce1627b4bf69ba6caa3a5ffe7fe27fb"
+ },
+ {
+  "file": "modImmersiveCamNG/content/scripts/game/player/states/swimming.ws",
+  "before": "88dddef376cfbe1cf7644bac20b17a66ed723ce66326deecb4e4c095b597e824",
+  "after": "d8ef39144f5e72c0f66db95d45ca12dafc9d1185de8959d13ae4301c2258d51d"
+ },
+ {
+  "file": "modImmersiveCamNG/content/scripts/game/player/states/vehicles/horseRiding.ws",
+  "before": "48535815e0747d991cb28531ad3f14297095a6c81bb8707bb0ad32e8b164598b",
+  "after": "5db2c3780227b98160f83c6106c8aa0b900311647ed1afec23b7f89df7289cb8"
+ },
+ {
+  "file": "modImmersiveCamNG/content/scripts/game/player/states/vehicles/mountHorse.ws",
+  "before": "51c8780746e7818d42e065b77ff01562a169e2d763912ca2f4903b6418c6bc33",
+  "after": "495f81316fa8ae2c0fb87c93af56691a6fb168ef9ef7fec2bba7e895973d7605"
+ },
+ {
+  "file": "modImmersiveCamNG/content/scripts/game/player/states/vehicles/sailing.ws",
+  "before": "f1bfe6c077d745baf7ffdd698cb3d0f3b88f779639992d60f7c5b8d5d3fae66a",
+  "after": "b9af02261548174d1f696d802d1b2b7d5f3e9de9c060baab7605c50e2f6ae196"
+ },
+ {
+  "file": "modImmersiveCamNG/content/scripts/game/vehicles/horse/horseComponent.ws",
+  "before": "7299e8926dd5badc58a253fd3391d35ada7e76d8a11ae836e2f6a919ca051000",
+  "after": "7d86b1eadf54bc55a62f826828d4c939d3cd9ae82dfc4122bf45c2ac67a039dd"
+ }
+]

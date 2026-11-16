@@ -1,0 +1,56 @@
+--- a/modBetterIcons2025_NextGen/content/scripts/game/gameplay/effects/effects/baseEffect.ws
++++ b/modBetterIcons2025_NextGen/content/scripts/game/gameplay/effects/effects/baseEffect.ws
+@@ -621,6 +621,9 @@
+ 	public function OnTimeUpdated(dt : float)
+ 	{	
+ 		var toxicityThreshold : float;
++		var isDecoction : bool;
++
++		isDecoction = effectType >= EET_Mutagen01 && effectType <= EET_Mutagen28;
+ 		
+ 		if( isActive && pauseCounters.Size() == 0)
+ 		{
+@@ -630,17 +633,11 @@
+ 				timeLeft -= dt;				
+ 				if( timeLeft <= 0 )
+ 				{
+-					if(isPotionEffect && isOnPlayer && thePlayer.CanUseSkill(S_Alchemy_s03) && effectType != EET_WhiteRaffardDecoction )				
++					if(isPotionEffect && isOnPlayer && thePlayer.CanUseSkill(S_Alchemy_s03) && effectType != EET_WhiteRaffardDecoction && !isDecoction )				
+ 					{
+-						toxicityThreshold = thePlayer.GetStatMax(BCS_Toxicity) * (1 - CalculateAttributeValue( thePlayer.GetSkillAttributeValue(S_Alchemy_s03, 'toxicity_threshold', false, true) ) * thePlayer.GetSkillLevel(S_Alchemy_s03));
+-						if(thePlayer.GetStat(BCS_Toxicity, true) > toxicityThreshold)
+-						{
+-							
+-						}
+-						else
+-						{
+-							isActive = false;
+-						}						
++						isActive = false;
++
++											
+ 					}
+ 					else
+ 					{
+@@ -863,6 +860,21 @@
+ 		duration = newDuration;
+ 		timeLeft = newDuration * leftRatio;
+ 	}
++
++	public function DelayedRecoveryPotionDurationIncrease()
++	{
++		if (isPotionEffect)
++		{
++			if (timeLeft + 5 <= duration)
++			{
++				timeLeft += 5;
++			}
++			else
++			{
++				timeLeft = duration;
++			}
++		}
++	}
+ 	
+ 	public function GetTargetEffectName() : name
+ 	{

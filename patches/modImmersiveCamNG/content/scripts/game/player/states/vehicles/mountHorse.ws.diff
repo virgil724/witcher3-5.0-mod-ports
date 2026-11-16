@@ -1,0 +1,96 @@
+--- a/modImmersiveCamNG/content/scripts/game/player/states/vehicles/mountHorse.ws
++++ b/modImmersiveCamNG/content/scripts/game/player/states/vehicles/mountHorse.ws
+@@ -25,6 +25,11 @@
+ 		thePlayer.AddBuffImmunity( EET_Pull, 'HorseRidingBuffImmunity', true );
+ 		
+ 		horseComp = (W3HorseComponent)vehicle;
++
++		if( vehicle.GetEntity().HasTag( 'carriage_horse' ) ) 
++		{
++			thePlayer.SetBehaviorVariable( 'isRidingCart', 1.f, true );
++		}
+ 		
+ 		if( horseComp )
+ 		{
+@@ -41,7 +46,11 @@
+ 			instantMount = true;
+ 		}
+ 		
+-		theGame.ActivateHorseCamera( true, 0.f, instantMount );
++		if ( !IsMountsRemasterEnabled() )
++		{
++			
++			theGame.ActivateHorseCamera( true, instantMount ? 0.f : 0.4f, instantMount );
++		}
+ 		
+ 		if ( (W3ReplacerCiri)thePlayer )
+ 		{
+@@ -70,16 +79,14 @@
+ 	
+ 	private var mountAnimStarted : bool;
+ 	
+-	const var MOUNT_TIMEOUT : float;
+-	default MOUNT_TIMEOUT = 5.0;
+-	
+ 	entry function ProcessMountHorse()
+ 	{
+ 		var riderData 			: CAIStorageRiderData;
+ 		var distance			: float;
+ 		var contextSwitchOffset	: float;
+ 		var mountStartTimestamp : float;
+-		
++		var mountTimeout : float;
++
+ 		parent.SetCleanupFunction( 'MountCleanup' );
+ 		
+ 		mountAnimStarted = false;
+@@ -104,6 +111,11 @@
+ 		
+ 		SleepOneFrame();
+ 		
++		mountTimeout = 5.0;
++		if (horseComp.useEarlyExploration)
++		{
++			mountTimeout = 10.0;
++		}
+ 		mountStartTimestamp = theGame.GetEngineTimeAsSeconds();
+ 		while( true )
+ 		{
+@@ -115,7 +127,7 @@
+ 			{
+ 			
+ 			}
+-			else if ( riderData.ridingManagerMountError == true || mountStartTimestamp + MOUNT_TIMEOUT < theGame.GetEngineTimeAsSeconds() )
++			else if ( riderData.ridingManagerMountError == true || mountStartTimestamp + mountTimeout < theGame.GetEngineTimeAsSeconds() )
+ 			{
+ 				OnMountingFailed();
+ 				parent.PopState();
+@@ -138,7 +150,7 @@
+ 	{	
+ 		super.OnMountingFailed();
+ 
+-		theGame.ActivateHorseCamera( false, 0.f );	
++		theGame.ActivateHorseCamera( false, 0.2f );	
+ 	}
+ 	
+ 	event OnMountAnimStarted()
+@@ -146,9 +158,18 @@
+ 		mountAnimStarted = true;
+ 	}
+ 	
++	event OnMountAnimCancelled()
++	{
++		mountAnimStarted = false;
++	}
++
+ 	event OnHorseRidingOn()
+ 	{
+-		horseComp.PushState( 'Exploration' );
++		
++		if ( !horseComp.useEarlyExploration || horseComp.GetCurrentStateName() != 'Exploration' )
++		{
++			horseComp.PushState( 'Exploration' );
++		}
+ 	}
+ 	
+ 	event OnDeath( damageAction : W3DamageAction )

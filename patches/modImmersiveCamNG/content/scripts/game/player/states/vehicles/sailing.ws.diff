@@ -1,0 +1,15 @@
+--- a/modImmersiveCamNG/content/scripts/game/player/states/vehicles/sailing.ws
++++ b/modImmersiveCamNG/content/scripts/game/player/states/vehicles/sailing.ws
+@@ -540,7 +540,11 @@
+ 	}
+ 	
+ 	event OnGameCameraPostTick( out moveData : SCameraMovementData, dt : float )
+-	{
++	{	
++		
++		if (thePlayer.IsQuestCameraRequestActive())
++			theGame.GetGameCamera().SetAllowAutoRotation(true);
++
+ 		if ( super.OnGameCameraPostTick( moveData, dt ) )
+ 			return true;
+ 	}

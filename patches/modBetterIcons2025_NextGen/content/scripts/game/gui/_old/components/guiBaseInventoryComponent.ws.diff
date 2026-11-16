@@ -1,0 +1,36 @@
+--- a/modBetterIcons2025_NextGen/content/scripts/game/gui/_old/components/guiBaseInventoryComponent.ws
++++ b/modBetterIcons2025_NextGen/content/scripts/game/gui/_old/components/guiBaseInventoryComponent.ws
+@@ -333,6 +333,8 @@
+ 		var bRead : bool;
+ 		var tmp: bool;
+ 		var chargesCount:int;
++
++		var transmogAppearance : name;
+ 		
+ 		uiData = _inv.GetInventoryItemUIData( item );
+ 		slotType = GetItemEquippedSlot( item );
+@@ -457,6 +459,7 @@
+ 		flashObject.SetMemberFlashBool( "isWeaponUpgrade",  _inv.ItemHasTag(item, 'WeaponUpgrade') );
+ 		flashObject.SetMemberFlashBool( "isArmorRepairKit", _inv.ItemHasTag(item, 'ArmorReapairKit') );
+ 		flashObject.SetMemberFlashBool( "isWeaponRepairKit", _inv.ItemHasTag(item, 'WeaponReapairKit') );
++		flashObject.SetMemberFlashBool( "isSharpener", _inv.ItemHasTag(item, 'Sharpstone') );
+ 		flashObject.SetMemberFlashBool( "isDye", _inv.IsItemDye( item ) );
+ 		flashObject.SetMemberFlashBool( "isMask", _inv.IsItemMask( item ) ); 
+ 		
+@@ -519,6 +522,16 @@
+ 		
+ 		
+ 		flashObject.SetMemberFlashString( "category", _inv.GetItemCategory(item) );
++
++		transmogAppearance = _inv.GetItemTemplateOverride(item);
++		if(_inv.HasTransmogAppearance(item)) {
++			flashObject.SetMemberFlashBool( "transmog", true );
++			flashObject.SetMemberFlashString("iconPath", _inv.GetItemIconPathByName(transmogAppearance) );
++			if(!theGame.GetDefinitionsManager().CanItemBeColoredByName(transmogAppearance))
++			{
++				flashObject.SetMemberFlashString( "itemColor", "" );
++			}
++		}
+ 		
+ 	}
+ 	
